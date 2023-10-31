@@ -1,3 +1,5 @@
+package TextReader;
+
 import java.util.Scanner;
 
 public class TextReader {
@@ -15,16 +17,15 @@ public class TextReader {
         return text.toString();
     }
 }
-
-class TextCounter {
+public class TextCounter {
     public static void main(String[] args) {
 
         TextReader textReader = new TextReader();
 
         String inputText = textReader.readText();
 
-        int radCount = 0;
-        int txtCount = 0;
+        int countLine = 0;
+        int addLine = 0;
 
         Scanner scan = new Scanner(inputText);
 
@@ -33,12 +34,12 @@ class TextCounter {
             String line = scan.nextLine();
 
             if (!line.equals("stop")) {
-                radCount++;
-                txtCount += line.length();
+                countLine++;
+                addLine += line.length();
             }
         }
 
-        System.out.println("Följande antal tecken skrevs in: " + txtCount);
-        System.out.println("I såhär många omgångar: " + radCount);
+        System.out.println("Följande antal tecken skrevs in: " + addLine);
+        System.out.println("I såhär många omgångar: " + countLine);
     }
 }
