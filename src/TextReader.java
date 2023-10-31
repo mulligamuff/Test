@@ -2,20 +2,14 @@ import java.util.Scanner;
 
 public class TextReader {
     public String readText() {
-
         Scanner scanner = new Scanner(System.in);
-
         StringBuilder text = new StringBuilder();
-        String txt;
 
         System.out.println("Skriv in text. Skriv 'stop' för att avsluta.");
 
-        while (true) {
-            txt = scanner.nextLine();
-            if (txt.equals("stop")) {
-                break;
-            }
-            text.append(txt).append("\n");
+        String line;
+        while (!(line = scanner.nextLine()).equalsIgnoreCase("stop")) {
+            text.append(line).append("\n");
         }
 
         return text.toString();
