@@ -18,6 +18,8 @@ public class TextReader {
     }
 }
 
+    // De skulle vara i sepparata classer, vilket den typ är, men detta är endast ett "Tekniskt fel".
+
 class TextCounter {
 
     private int lineCount = 0;
