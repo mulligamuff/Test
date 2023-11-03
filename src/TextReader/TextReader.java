@@ -17,29 +17,21 @@ public class TextReader {
         return text.toString();
     }
 }
-public class TextCounter {
-    public static void main(String[] args) {
 
-        TextReader textReader = new TextReader();
+class TextCounter {
 
-        String inputText = textReader.readText();
+    private int lineCount = 0;
+    private int characterCount = 0;
+    public void countLine(String line) {
+        lineCount++;
+        characterCount += line.length();
+    }
 
-        int countLine = 0;
-        int addLine = 0;
+    public int getLineCount() {
+        return lineCount;
+    }
 
-        Scanner scan = new Scanner(inputText);
-
-        while (scan.hasNextLine()) {
-
-            String line = scan.nextLine();
-
-            if (!line.equals("stop")) {
-                countLine++;
-                addLine += line.length();
-            }
-        }
-
-        System.out.println("Följande antal tecken skrevs in: " + addLine);
-        System.out.println("I såhär många omgångar: " + countLine);
+    public int getCharacterCount() {
+        return characterCount;
     }
 }
