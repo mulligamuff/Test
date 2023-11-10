@@ -14,26 +14,16 @@ public class TextReader {
             text.append(line).append("\n");
         }
 
-        return text.toString();
-    }
-}
+        TextCounter textCounter = new TextCounter();
+        textCounter.countLine(text.toString());
 
-    // De skulle vara i sepparata classer, vilket den typ är, men detta är endast ett "Tekniskt fel".
-
-class TextCounter {
-
-    private int lineCount = 0;
-    private int characterCount = 0;
-    public void countLine(String line) {
-        lineCount++;
-        characterCount += line.length();
+        return textCounter.toString();
     }
 
-    public int getLineCount() {
-        return lineCount;
-    }
+    public static void main(String[] args) {
+        TextReader textReader = new TextReader();
+        String result = textReader.readText();
 
-    public int getCharacterCount() {
-        return characterCount;
+        System.out.println(result);
     }
 }

@@ -18,7 +18,7 @@ public class TextCounterTest {
             textCounter.countLine("Line 1");
             textCounter.countLine("Line 2");
             textCounter.countLine("Line 3");
-            assertEquals(3, textCounter.getLineCount());
+            assertEquals(3, textCounter.getCountLine());
         }
 
         @Test
@@ -47,7 +47,7 @@ public class TextCounterTest {
                 textCounter.countLine(line);
             }
 
-            assertEquals(2, textCounter.getLineCount());
+            assertEquals(2, textCounter.getCountLine());
             assertEquals(30, textCounter.getCharacterCount());
 
             // Actual är 27
