@@ -26,4 +26,5 @@ public class TextCounter {
     public String toString() {
         return "Number of lines: " + countLine + "\nNumber of characters: " + characterCount;
     }
+
 }

@@ -20,6 +20,7 @@ public class TextReader {
         return textCounter.toString();
     }
 
+
     public static void main(String[] args) {
         TextReader textReader = new TextReader();
         String result = textReader.readText();
