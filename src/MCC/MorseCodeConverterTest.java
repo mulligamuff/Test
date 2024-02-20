@@ -1,8 +1,7 @@
 package MCC;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MorseCodeConverterTest {
 
@@ -18,11 +17,17 @@ public class MorseCodeConverterTest {
 
     @Test
     public void testInvalidMorseCharacter() {
-        assertEquals("", MorseCodeConverter.morseToEnglish(".... . .-.. .-.. --- @@@@"));
+        assertEquals("Invalid Morse Code", MorseCodeConverter.morseToEnglish(".... . .-.. .-.. --- @@@@"));
     }
 
     @Test
     public void testInvalidEnglishCharacter() {
-        assertEquals("", MorseCodeConverter.englishToMorse("ä"));
+        assertEquals("Invalid English Character", MorseCodeConverter.englishToMorse("ä"));
     }
+
+    @Test
+    public void testMorseWithExtraSpaces() {
+        assertEquals("HELLO WORLD", MorseCodeConverter.morseToEnglish("....  . .-.. .-.. ---   .-- --- .-. .-.. -.."));
+    }
+
 }

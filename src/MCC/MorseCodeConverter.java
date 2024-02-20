@@ -75,14 +75,18 @@ public class MorseCodeConverter {
     public static String englishToMorse(String english) {
         StringBuilder morse = new StringBuilder();
         for (char c : english.toUpperCase().toCharArray()) {
-            String morseCode = englishToMorse.get(String.valueOf(c));
-            if (morseCode != null) {
-                morse.append(morseCode).append(" ");
+            if (Character.isWhitespace(c)) {
+                morse.append("   ");
             } else {
-
-                return "Invalid English Character";
+                String morseCode = englishToMorse.get(String.valueOf(c));
+                if (morseCode != null) {
+                    morse.append(morseCode).append(" ");
+                } else {
+                    return "Invalid English Character";
+                }
             }
         }
         return morse.toString().trim();
     }
+
 }
