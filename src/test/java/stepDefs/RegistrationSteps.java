@@ -25,6 +25,8 @@ public class RegistrationSteps {
     private WebDriver driver;
     private String baseUrl = "https://membership.basketballengland.co.uk/NewSupporterAccount";
 
+
+
     @Before
     public void setUp() {
         driver = new ChromeDriver();
@@ -37,23 +39,21 @@ public class RegistrationSteps {
 
     @When("User enters valid user details")
     public void user_enters_valid_user_details() {
-        enterUserDetails("25/05/1994","John", "Doe", "muthoz.gamer+EC@gmail.com", "muthoz.gamer+EC@gmail.com", "password123", "password123", true);
+        enterUserDetails("25/05/1994","John", "Doe", "cottoncuddle.rex+EC@gmail.com", "cottoncuddle.rex+EC@gmail.com", "password123", "password123", true);
     }
 
     @When("Clicks on the button to submit the details")
     public void clicks_on_the_button_to_submit_the_details() {
         WebElement submitButton = driver.findElement(By.cssSelector(".btn.btn-big.red[value='CONFIRM AND JOIN']"));
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        submitButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebElement clickableButton = wait.until(ExpectedConditions.elementToBeClickable(submitButton));
+        clickableButton.click();
     }
 
     @Then("User should be registered successfully")
     public void user_should_be_registered_successfully() {
-        WebElement successMessage = until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[contains(text(),'THANK YOU FOR CREATING AN ACCOUNT WITH BASKETBALL ENGLAND')]")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2.bold.gray.text-center.margin-bottom-40")));
         assertTrue(successMessage.isDisplayed());
     }
 
@@ -74,7 +74,6 @@ public class RegistrationSteps {
         JavascriptExecutor executor = (JavascriptExecutor)driver;
         executor.executeScript("document.getElementById('" + id + "').click();");
     }
-
     private void enterUserDetails(String dateOfBirth, String firstName, String lastName, String eMail, String confEmail, String password, String confPassword, boolean acceptTerms) {
         WebElement dateOfBirthField = driver.findElement(By.id("dp"));
         dateOfBirthField.sendKeys(dateOfBirth);
