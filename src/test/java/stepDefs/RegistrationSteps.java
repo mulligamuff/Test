@@ -50,6 +50,23 @@ public class RegistrationSteps {
         clickableButton.click();
     }
 
+
+    @When("User enters valid user details without last name")
+    public void user_enters_valid_user_details_without_last_name() {
+        enterUserDetails("25/05/1994","John", " ", "cottoncuddle.rex+EC@gmail.com", "cottoncuddle.rex+EC@gmail.com", "password123", "password123", true);
+    }
+
+    @When("User enters valid user details with mismatched password")
+    public void user_enters_valid_user_details_with_mismatched_password() {
+        enterUserDetails("25/05/1994","John", "Doe", "cottoncuddle.rex+EC@gmail.com", "cottoncuddle.rex+EC@gmail.com", "password123", "pass123124152", true);
+    }
+
+    @When("User enters valid user details without accepting terms and conditions")
+    public void user_enters_valid_user_details_without_accepting_terms_and_conditions() {
+        enterUserDetails("25/05/1994","John", "Doe", "cottoncuddle.rex+EC@gmail.com", "cottoncuddle.rex+EC@gmail.com", "password123", "password123", false);
+    }
+
+
     @Then("User should be registered successfully")
     public void user_should_be_registered_successfully() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
